@@ -1,4 +1,4 @@
-tableextension 50101 "Customer_SGS" extends Customer//18
+tableextension 50101 "Customer SGS" extends Customer//18
 {
     fields
     {

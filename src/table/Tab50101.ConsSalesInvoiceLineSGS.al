@@ -4,20 +4,15 @@ table 50101 "Cons Sales Invoice Line SGS"
 
     fields
     {
-        field(1; "Line num"; Integer)
-        {
-            Caption = 'Line number';
 
 
-        }
-
-        field(2; "Document No."; Code[20])
+        field(1; "Document No."; Code[20])
         {
             Caption = 'Document No.';
             TableRelation = "Cons Sales Invoice Header SGS";
 
         }
-        field(3; "Line No."; Integer)
+        field(2; "Line No."; Integer)
         {
             Caption = 'Line No.';
         }
@@ -32,10 +27,10 @@ table 50101 "Cons Sales Invoice Line SGS"
         field(30; "Child Sales Invoice Amount"; Decimal)
         {
             Caption = 'Child Sales Invoice Amount';
-            AutoFormatType = 1;
-            AutoFormatExpression = '';
             FieldClass = FlowField;
-            CalcFormula = Max("Sales Invoice Header".Amount WHERE("No." = FIELD("Document No.")));
+            //AutoFormatType = 1;
+            //AutoFormatExpression = '';
+            CalcFormula = Sum("Sales Invoice Line"."Amount Including VAT" WHERE("Document No." = field("Child Sales Invoice")));
 
         }
 
@@ -53,27 +48,27 @@ table 50101 "Cons Sales Invoice Line SGS"
         }
     }
 
-    var
-        myInt: Integer;
+    // var
+    //     myInt: Integer;
 
-    trigger OnInsert()
-    begin
+    // trigger OnInsert()
+    // begin
 
-    end;
+    // end;
 
-    trigger OnModify()
-    begin
+    // trigger OnModify()
+    // begin
 
-    end;
+    // end;
 
-    trigger OnDelete()
-    begin
+    // trigger OnDelete()
+    // begin
 
-    end;
+    // end;
 
-    trigger OnRename()
-    begin
+    // trigger OnRename()
+    // begin
 
-    end;
+    // end;
 
 }

@@ -20,6 +20,14 @@ pageextension 50100 "Sales & Receivables Setup SGS" extends "Sales & Receivables
                 end;
             }
         }
+        addafter("Customer Nos.")
+        {
+            field("Consolidated Invoice No."; rec."Consolidated Invoice No.")
+            {
+                Caption = 'Consolidated Invoice No.';
+                ApplicationArea = All;
+            }
+        }
     }
 
     actions

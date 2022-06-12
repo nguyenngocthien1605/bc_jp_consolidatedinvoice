@@ -10,6 +10,13 @@ tableextension 50100 "Sales & Receivables Setup SGS" extends "Sales & Receivable
             InitValue = false;
         }
 
+
+        field(50200; "Consolidated Invoice No."; Code[20])
+        {
+            Caption = 'Consolidated Invoice No.';
+            TableRelation = "No. Series";
+        }
+
     }
 
 

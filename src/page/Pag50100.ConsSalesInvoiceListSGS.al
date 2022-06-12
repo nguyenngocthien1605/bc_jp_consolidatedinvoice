@@ -3,17 +3,25 @@ page 50100 "Cons Sales Invoice List SGS"
     Caption = 'Consolidated Sales Invoices';
 
     PageType = List;
-    ApplicationArea = All;
-    UsageCategory = Administration;
     SourceTable = "Cons Sales Invoice Header SGS";
+    CardPageId = "Cons Sales Invoice Card SGS";
+
+    UsageCategory = Lists;
+    ApplicationArea = All;
 
     layout
     {
         area(Content)
         {
-            group("Group 1")
+            repeater(Group)
             {
                 field("No."; rec."No.")
+                {
+                    ApplicationArea = All;
+
+                }
+
+                field("Customer No."; rec."Customer No.")
                 {
                     ApplicationArea = All;
 
@@ -46,15 +54,30 @@ page 50100 "Cons Sales Invoice List SGS"
                 Caption = 'Process';
                 action(Generate)
                 {
-                    Caption = 'Generate consolidated invoice';
+                    Caption = '1. Consolidate sales invoices';
                     ApplicationArea = All;
 
                     trigger OnAction()
+                    var
+                        ConsSalesInvoiceMgt: Codeunit "Cons Sales Invoices Mgt SGS";
                     begin
-                        Message('Generate consolidated invoice (to be implemented');
+                        ConsSalesInvoiceMgt.CollectChildSalesInvoice(rec);
+                    end;
+                }
+                action(Show)
+                {
+                    Caption = '2. Open consolidated sales invoices details';
+                    ApplicationArea = All;
+
+                    trigger OnAction()
+                    var
+                        ConsSalesInvoiceLinePage: Page "Cons Sales Invoice Line SGS";
+                    begin
+                        ConsSalesInvoiceLinePage.Run();
                     end;
                 }
             }
+
 
         }
     }

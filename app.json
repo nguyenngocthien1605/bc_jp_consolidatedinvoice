@@ -2,14 +2,14 @@
   "id": "aa84b25d-cd6a-4ed4-9bd5-6dbbe3d4fbdb",
   "name": "SGS_ConsolidatedInvoice",
   "publisher": "Syscom Global Solution",
-  "version": "1.0.0.0",
+  "version": "1.0.0.1",
   "brief": "",
   "description": "",
   "privacyStatement": "",
   "EULA": "",
   "help": "",
   "url": "",
-  "logo": "",
+  "logo": "logo/syscom.jpg",
   "dependencies": [],
   "screenshots": [],
   "platform": "1.0.0.0",
@@ -25,5 +25,6 @@
     "allowDownloadingSource": false,
     "includeSourceInSymbolFile": false
   },
-  "runtime": "9.0"
+  "runtime": "9.0",
+  "features": ["TranslationFile"]
 }

@@ -25,7 +25,7 @@ codeunit 50101 "Cons Sales Invoices Mgt SGS"
 
         line := 1;
         SalesInvoice.SetRange("Bill-to Customer No.", ConsSalesInvoiceHeader."Customer No.");
-        SalesInvoice.SetFilter("Due Date", '%1..%2', ConsSalesInvoiceHeader."From Date", ConsSalesInvoiceHeader."To Date");
+        SalesInvoice.SetFilter("Posting Date", '%1..%2', ConsSalesInvoiceHeader."From Date", ConsSalesInvoiceHeader."To Date");
         SalesInvoice.SetRange("Target of Consolidation", true);
 
         if SalesInvoice.FindSet() then

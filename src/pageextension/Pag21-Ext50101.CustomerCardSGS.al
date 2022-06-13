@@ -29,6 +29,7 @@ pageextension 50101 "Customer Card SGS" extends "Customer Card"//21
     end;
 
     var
+        [InDataSet]
         showConsDay: Boolean;
 
     local procedure setVisibleForConsDay()

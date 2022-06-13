@@ -1,6 +1,6 @@
 .alpackages
 *.app
-app.json
+#app.json
 launch.json
 rad.json
 setting.json

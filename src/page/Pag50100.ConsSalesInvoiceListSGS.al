@@ -68,13 +68,9 @@ page 50100 "Cons Sales Invoice List SGS"
                 {
                     Caption = '2. Open consolidated sales invoices details';
                     ApplicationArea = All;
+                    RunObject = page "Cons Sales Invoice Line SGS";
+                    RunPageLink = "Document No." = field("No.");
 
-                    trigger OnAction()
-                    var
-                        ConsSalesInvoiceLinePage: Page "Cons Sales Invoice Line SGS";
-                    begin
-                        ConsSalesInvoiceLinePage.Run();
-                    end;
                 }
             }
 

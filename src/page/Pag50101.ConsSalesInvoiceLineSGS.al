@@ -44,5 +44,4 @@ page 50101 "Cons Sales Invoice Line SGS"
         }
     }
 
-
 }

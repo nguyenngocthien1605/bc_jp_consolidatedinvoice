@@ -92,6 +92,18 @@ table 50100 "Cons Sales Invoice Header SGS"
             Caption = 'To Date';
         }
 
+        field(40; "Due Date"; Date)
+        {
+            Caption = 'Due Date (Cons Inv)';
+        }
+
+
+        field(90; "Status"; Enum ConsStatus)
+        {
+            Caption = 'Status';
+            InitValue = "Un-Confirmed";
+        }
+
 
     }
 
@@ -134,4 +146,15 @@ table 50100 "Cons Sales Invoice Header SGS"
         exit(DMY2Date(Day, Month, Year));
     end;
 
+}
+enum 50100 ConsStatus
+{
+    Extensible = true;
+
+    value(1; "Un-Confirmed")
+    {
+    }
+    value(2; "Confirmed")
+    {
+    }
 }

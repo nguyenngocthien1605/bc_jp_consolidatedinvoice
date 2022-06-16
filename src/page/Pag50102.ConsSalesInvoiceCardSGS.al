@@ -36,38 +36,48 @@ page 50102 "Cons Sales Invoice Card SGS"
 
                 }
 
+                field("Due Date"; rec."Due Date")
+                {
+                    ApplicationArea = All;
+                }
+
+                field("Status"; rec.Status)
+                {
+                    ApplicationArea = All;
+                }
+
             }
 
 
         }
     }
 
-    actions
-    {
-        area(Processing)
-        {
+    // actions
+    // {
+    //     area(Processing)
+    //     {
 
-            action(Generate)
-            {
-                Caption = '1. Consolidate sales invoices';
-                ApplicationArea = All;
+    //         action(Generate)
+    //         {
+    //             Caption = '1. Confirm';
+    //             ApplicationArea = All;
 
-                trigger OnAction()
-                var
-                    ConsSalesInvoiceMgt: Codeunit "Cons Sales Invoices Mgt SGS";
-                begin
-                    ConsSalesInvoiceMgt.CollectChildSalesInvoice(Rec);
-                end;
-            }
-            action(Show)
-            {
-                Caption = '2. Open consolidated sales invoices details';
-                ApplicationArea = All;
-                RunObject = page "Cons Sales Invoice Line SGS";
-                RunPageLink = "Document No." = field("No.");
+    //             trigger OnAction()
+    //             var
+    //                 ConsSalesInvoiceMgt: Codeunit "Cons Sales Invoices Mgt SGS";
+    //             begin
+    //                 ConsSalesInvoiceMgt.Confirm(Rec);
+    //             end;
+    //         }
+    //         action(Show)
+    //         {
+    //             Caption = '2. Open consolidated sales invoices details';
+    //             ApplicationArea = All;
+    //             RunObject = page "Cons Sales Invoice Line SGS";
+    //             RunPageLink = "Document No." = field("No.");
 
-            }
-        }
-    }
+    //         }
+    //     }
+    // }
 
 }

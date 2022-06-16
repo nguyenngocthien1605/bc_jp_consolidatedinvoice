@@ -1,10 +1,12 @@
 page 50101 "Cons Sales Invoice Line SGS"
 {
-    Caption = 'Consolidated sales invoice details';
-    PageType = List;
+    AutoSplitKey = true;
+    Caption = 'Lines';
     Editable = false;
+    LinksAllowed = false;
+    PageType = ListPart;
     SourceTable = "Cons Sales Invoice Line SGS";
-
+    CardPageId = "Sales Invoice";
     layout
     {
         area(Content)
@@ -12,12 +14,12 @@ page 50101 "Cons Sales Invoice Line SGS"
             repeater("Details")
             {
 
-                field("Document No."; rec."Document No.")
-                {
-                    Caption = 'Document No.';
-                    ApplicationArea = All;
+                // field("Document No."; rec."Document No.")
+                // {
+                //     Caption = 'Document No.';
+                //     ApplicationArea = All;
 
-                }
+                // }
                 field("Line No."; rec."Line No.")
                 {
                     Caption = 'Line No.';
@@ -28,6 +30,18 @@ page 50101 "Cons Sales Invoice Line SGS"
                 field("Child Sales Invoice"; rec."Child Sales Invoice")
                 {
                     Caption = 'Sales Invoice';
+                    ApplicationArea = All;
+                    trigger OnDrillDown()
+                    var
+                        DataDrillDown: Codeunit "Child Sales Invoice Drill Down";
+                    begin
+                        DataDrillDown.SalesInvoiceDrillDown(Rec);
+                    end;
+                }
+
+                field("Due Date"; rec."Due Date")
+                {
+                    Caption = 'Due Date';
                     ApplicationArea = All;
 
                 }

@@ -1,10 +1,10 @@
 page 50100 "Cons Sales Invoice List SGS"
 {
-    Caption = 'Consolidated Sales Invoices';
+    Caption = 'Consolidated Sales Invoices List';
 
     PageType = List;
     SourceTable = "Cons Sales Invoice Header SGS";
-    CardPageId = "Cons Sales Invoice Card SGS";
+    CardPageId = "ConsSalesInvoiceDocumentSGS";
 
     UsageCategory = Lists;
     ApplicationArea = All;
@@ -38,6 +38,17 @@ page 50100 "Cons Sales Invoice List SGS"
                     ApplicationArea = All;
 
                 }
+                field("Due Date"; rec."Due Date")
+                {
+                    ApplicationArea = All;
+
+                }
+
+                field("Status"; rec.Status)
+                {
+                    ApplicationArea = All;
+                }
+
 
             }
 
@@ -52,24 +63,39 @@ page 50100 "Cons Sales Invoice List SGS"
             group("Process")
             {
                 Caption = 'Process';
-                action(Generate)
+                action(Confirm)
                 {
-                    Caption = '1. Consolidate sales invoices';
+                    Caption = 'Confirm';
                     ApplicationArea = All;
+                    Enabled = enableConfirm;
+                    trigger OnAction()
+                    var
+                        ConsSalesInvoiceMgt: Codeunit "Cons Sales Invoices Mgt SGS";
+                    begin
+                        ConsSalesInvoiceMgt.Confirm(rec);
+                    end;
+                }
+
+                action(UnConfirm)
+                {
+                    Caption = 'Un-Confirm';
+                    ApplicationArea = All;
+                    Enabled = enableUnconfirm;
 
                     trigger OnAction()
                     var
                         ConsSalesInvoiceMgt: Codeunit "Cons Sales Invoices Mgt SGS";
                     begin
-                        ConsSalesInvoiceMgt.CollectChildSalesInvoice(rec);
+                        ConsSalesInvoiceMgt.UnConfirm(rec);
                     end;
                 }
+
                 action(Show)
                 {
-                    Caption = '2. Open consolidated sales invoices details';
+                    Caption = 'Show details';
                     ApplicationArea = All;
-                    RunObject = page "Cons Sales Invoice Line SGS";
-                    RunPageLink = "Document No." = field("No.");
+                    RunObject = page "ConsSalesInvoiceDocumentSGS";
+                    RunPageLink = "No." = field("No.");
 
                 }
             }
@@ -78,5 +104,21 @@ page 50100 "Cons Sales Invoice List SGS"
         }
     }
 
+    trigger OnAfterGetCurrRecord()
+
+    begin
+        if (Rec.Status = ConsStatus::Confirmed) then begin
+            enableConfirm := false;
+            enableUnconfirm := true;
+        end
+        else begin
+            enableConfirm := true;
+            enableUnconfirm := false;
+        end;
+
+    end;
+
+    var
+        enableConfirm, enableUnconfirm : boolean;
 
 }

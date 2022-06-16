@@ -24,6 +24,13 @@ table 50101 "Cons Sales Invoice Line SGS"
 
         }
 
+        field(21; "Due Date"; Date)
+        {
+            Caption = 'Due Date';
+            FieldClass = FlowField;
+            CalcFormula = lookup("Sales Invoice Header"."Due Date" where("No." = field("Child Sales Invoice")));
+        }
+
         field(30; "Child Sales Invoice Amount"; Decimal)
         {
             Caption = 'Child Sales Invoice Amount';

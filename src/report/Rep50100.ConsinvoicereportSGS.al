@@ -8,38 +8,80 @@ report 50100 "Cons invoice report SGS"
     DefaultRenderingLayout = WordLayout;
     dataset
     {
-        dataitem(ConsSalesInvoiceLine; "Cons Sales Invoice Line SGS")
+        dataitem(ConsSalesInvHeader; "Cons Sales Invoice Header SGS")
         {
-            column(ConsSalesInvoiceLine_DocNo; ConsSalesInvoiceLine."Document No.")
+
+            DataItemTableView = sorting("No.");
+            RequestFilterFields = "No.";
+
+            column(No_ConsSalesInvHeader; "No.")
+            {
+                IncludeCaption = true;
+
+            }
+            column(CustNo_ConsSalesInvHeader; "Customer No.")
             {
                 IncludeCaption = true;
             }
-            column(ConsSalesInvoiceLine_LineNo; ConsSalesInvoiceLine."Line No.")
+            column(FromDate_ConsSalesInvHeader; "From Date")
+            {
+                IncludeCaption = true;
+            }
+            column(ToDate_ConsSalesInvHeader; "To Date")
+            {
+                IncludeCaption = true;
+            }
+            column(DueDate_ConsSalesInvHeader; "Due Date")
             {
                 IncludeCaption = true;
             }
 
-            column(ConsSalesInvoiceLine_SalesInvoice; ConsSalesInvoiceLine."Child Sales Invoice")
+            column(Status_ConsSalesInvHeader; Status)
             {
                 IncludeCaption = true;
             }
 
-            column(ConsSalesInvoiceLine_SalesInvoiceAmount; ConsSalesInvoiceLine."Child Sales Invoice Amount")
+            dataitem(ConsSalesInvoiceLine; "Cons Sales Invoice Line SGS")
             {
-                IncludeCaption = true;
-            }
+                DataItemTableView = sorting("Document No.", "Line No.");
+                DataItemLink = "Document No." = field("No.");
+                column(DocumentNo_ConsSalesInvoiceLine; ConsSalesInvoiceLine."Document No.")
+                {
+                    IncludeCaption = true;
+                }
+                column(LineNo_ConsSalesInvoiceLine; ConsSalesInvoiceLine."Line No.")
+                {
+                    IncludeCaption = true;
+                }
 
-            trigger OnAfterGetRecord()
-            var
-            begin
-                CalcFields("Child Sales Invoice Amount");
-            end;
+                column(ChildInvoice_ConsSalesInvoiceLine; ConsSalesInvoiceLine."Child Sales Invoice")
+                {
+                    IncludeCaption = true;
+                }
+                column(DueDate_ConsSalesInvoiceLine; ConsSalesInvoiceLine."Due Date")
+                {
+                    IncludeCaption = true;
+                }
+
+                column(InvoiceAmount_ConsSalesInvoiceLine; ConsSalesInvoiceLine."Child Sales Invoice Amount")
+                {
+                    IncludeCaption = true;
+                }
+
+                trigger OnAfterGetRecord()
+                var
+                begin
+                    CalcFields("Child Sales Invoice Amount");
+                    CalcFields("Due Date");
+                end;
+            }
         }
+
     }
 
     requestpage
     {
-        SaveValues = true;
+
         layout
         {
         }
@@ -51,25 +93,23 @@ report 50100 "Cons invoice report SGS"
 
     rendering
     {
-        layout(RDLCLayout)
-        {
-            Type = RDLC;
-            LayoutFile = 'Layout\ConsInvoiceSGSListRDLC.rdl';
-
-        }
+        // layout(RDLCLayout)
+        // {
+        //     Type = RDLC;
+        //     LayoutFile = 'Layout\ConsInvoiceSGSListRDLC.rdl';
+        // }
         layout(WordLayout)
         {
             Type = Word;
             LayoutFile = 'Layout\ConsInvoiceSGSListWord.docx';
-
         }
 
     }
     trigger OnPreReport()
     var
-    //FormatDocument: Codeunit "Format Document";
+
     begin
-        //CustFilter := FormatDocument.GetRecordFiltersWithCaptions(Customer);
+
     end;
 
 

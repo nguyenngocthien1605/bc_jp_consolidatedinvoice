@@ -70,7 +70,7 @@ page 50103 "ConsSalesInvoiceDocumentSGS"
                 var
                     ConsSalesInvoiceMgt: Codeunit "Cons Sales Invoices Mgt SGS";
                 begin
-                    ConsSalesInvoiceMgt.Confirm(rec);
+                    ConsSalesInvoiceMgt.Confirm(Rec);
                 end;
             }
             action(UnConfirm)
@@ -83,7 +83,40 @@ page 50103 "ConsSalesInvoiceDocumentSGS"
                 var
                     ConsSalesInvoiceMgt: Codeunit "Cons Sales Invoices Mgt SGS";
                 begin
-                    ConsSalesInvoiceMgt.UnConfirm(rec);
+                    ConsSalesInvoiceMgt.UnConfirm(Rec);
+                end;
+            }
+
+            action(Print)
+            {
+                Caption = 'Print & Print Preview';
+                ApplicationArea = All;
+                trigger OnAction()
+                var
+                    ConsSalesInvoiceHeaderRec: Record "Cons Sales Invoice Header SGS";
+                    ToPrintReport: Report "Cons invoice report SGS";
+                begin
+
+                    ConsSalesInvoiceHeaderRec.SetCurrentKey("No.");
+                    ConsSalesInvoiceHeaderRec.SetFilter("No.", Rec."No.");
+                    ToPrintReport.SetTableView(ConsSalesInvoiceHeaderRec);
+                    ToPrintReport.Run();
+
+                end;
+
+            }
+            action(Print2PDF)
+            {
+                Caption = 'Print to PDF';
+                ApplicationArea = All;
+                trigger OnAction()
+                var
+                    ConsSalesInvoiceHeaderRec: Record "Cons Sales Invoice Header SGS";
+                begin
+                    ConsSalesInvoiceHeaderRec.SetCurrentKey("No.");
+                    ConsSalesInvoiceHeaderRec.SetFilter("No.", Rec."No.");
+                    Report.RunModal(Report::"Cons invoice report SGS", false, false, ConsSalesInvoiceHeaderRec);
+
                 end;
             }
         }

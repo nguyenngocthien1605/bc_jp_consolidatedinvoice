@@ -1,0 +1,257 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
+  <file datatype="xml" source-language="en-US" target-language="ja-JP" original="SGS_ConsolidatedInvoice.g.xlf" tool-id="ERPLoc" product-name="n/a" product-version="n/a" build-num="n/a" request-id="49231">
+    <header>
+      <tool tool-id="ERPLoc" tool-name="ERPLoc" tool-version="1.0.173.532" tool-company="Microsoft CoreXT" />
+    </header>
+    <body>
+      <group id="body">
+        <trans-unit id="Table 3075973404 - Property 2879900210" translate="yes" xml:space="preserve">
+          <source>Consolidated Sales Invoice Header</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">月次売上請求書ヘッダー</target>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Cons Sales Invoice Header SGS - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3075973404 - Field 4190130733 - Property 2879900210" translate="yes" xml:space="preserve">
+          <source>Customer No.</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">顧客番号</target>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Cons Sales Invoice Header SGS - Field Customer No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3075973404 - Field 4085727052 - Property 2879900210" translate="yes" xml:space="preserve">
+          <source>Due Date (Cons Inv)</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">期日 (短所)</target>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Cons Sales Invoice Header SGS - Field Due Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3075973404 - Field 2110632758 - Property 2879900210" translate="yes" xml:space="preserve">
+          <source>From Date</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">開始日</target>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Cons Sales Invoice Header SGS - Field From Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3075973404 - Field 4200184881 - Property 2879900210" translate="yes" xml:space="preserve">
+          <source>No.</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">いいえ。</target>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Cons Sales Invoice Header SGS - Field No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3075973404 - Field 1351594800 - Property 2879900210" translate="yes" xml:space="preserve">
+          <source>No. Series</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">いいえ。シリーズ</target>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Cons Sales Invoice Header SGS - Field No. Series - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3075973404 - Field 513339096 - Property 2879900210" translate="yes" xml:space="preserve">
+          <source>Status</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">ステータス</target>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Cons Sales Invoice Header SGS - Field Status - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 3075973404 - Field 2565971985 - Property 2879900210" translate="yes" xml:space="preserve">
+          <source>To Date</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">至</target>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Cons Sales Invoice Header SGS - Field To Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 470304659 - Field 2823423477 - Property 2879900210" translate="yes" xml:space="preserve">
+          <source>Child Sales Invoice</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">子売上請求書</target>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Cons Sales Invoice Line SGS - Field Child Sales Invoice - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 470304659 - Field 2967218617 - Property 2879900210" translate="yes" xml:space="preserve">
+          <source>Child Sales Invoice Amount</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">子売上請求書金額</target>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Cons Sales Invoice Line SGS - Field Child Sales Invoice Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 470304659 - Field 486908828 - Property 2879900210" translate="yes" xml:space="preserve">
+          <source>Document No.</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">ドキュメント番号</target>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Cons Sales Invoice Line SGS - Field Document No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 470304659 - Field 4085727052 - Property 2879900210" translate="yes" xml:space="preserve">
+          <source>Due Date</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">期日</target>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Cons Sales Invoice Line SGS - Field Due Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Table 470304659 - Field 3320823955 - Property 2879900210" translate="yes" xml:space="preserve">
+          <source>Line No.</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">行番号</target>
+          <note from="Xliff Generator" annotates="general" priority="3">Table Cons Sales Invoice Line SGS - Field Line No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 3975641557 - Control 2445482498 - Property 2879900210" translate="yes" xml:space="preserve">
+          <source>General</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">一般</target>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Cons Sales Invoice Card SGS - Control General - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 470304659 - Property 2879900210" translate="yes" xml:space="preserve">
+          <source>Lines</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">行</target>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Cons Sales Invoice Line SGS - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 470304659 - Control 2823423477 - Property 2879900210" translate="yes" xml:space="preserve">
+          <source>Sales Invoice</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">売上請求書</target>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Cons Sales Invoice Line SGS - Control Child Sales Invoice - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 470304659 - Control 2967218617 - Property 2879900210" translate="yes" xml:space="preserve">
+          <source>Sales Invoice Amount</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">売上請求書金額</target>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Cons Sales Invoice Line SGS - Control Child Sales Invoice Amount - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 470304659 - Control 4085727052 - Property 2879900210" translate="yes" xml:space="preserve">
+          <source>Due Date</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">期日</target>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Cons Sales Invoice Line SGS - Control Due Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 470304659 - Control 3320823955 - Property 2879900210" translate="yes" xml:space="preserve">
+          <source>Line No.</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">行番号</target>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Cons Sales Invoice Line SGS - Control Line No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2063361487 - Property 2879900210" translate="yes" xml:space="preserve">
+          <source>Consolidated Sales Invoices List</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">月次売上請求書一覧</target>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Cons Sales Invoice List SGS - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2063361487 - Action 2675496269 - Property 2879900210" translate="yes" xml:space="preserve">
+          <source>Process</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">プロセス</target>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Cons Sales Invoice List SGS - Action Process - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2063361487 - Action 2176757286 - Property 2879900210" translate="yes" xml:space="preserve">
+          <source>Confirm</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">確認</target>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Cons Sales Invoice List SGS - Action Confirm - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2063361487 - Action 1002420131 - Property 2879900210" translate="yes" xml:space="preserve">
+          <source>Print &amp; Print Preview</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">印刷と印刷のプレビュー</target>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Cons Sales Invoice List SGS - Action Print - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2063361487 - Action 1093692467 - Property 2879900210" translate="yes" xml:space="preserve">
+          <source>Print to PDF</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">PDF に印刷</target>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Cons Sales Invoice List SGS - Action Print2PDF - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2063361487 - Action 366713437 - Property 2879900210" translate="yes" xml:space="preserve">
+          <source>Show details</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">詳細の表示</target>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Cons Sales Invoice List SGS - Action Show - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 2063361487 - Action 3404024483 - Property 2879900210" translate="yes" xml:space="preserve">
+          <source>Un-Confirm</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">確定を解除</target>
+          <note from="Xliff Generator" annotates="general" priority="3">Page Cons Sales Invoice List SGS - Action UnConfirm - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4047045508 - Property 2879900210" translate="yes" xml:space="preserve">
+          <source>Cons Sales Invoice Document</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">売上請求書ドキュメントを確認します</target>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ConsSalesInvoiceDocumentSGS - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4047045508 - Control 470304659 - Property 2879900210" translate="yes" xml:space="preserve">
+          <source>Lines</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">行</target>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ConsSalesInvoiceDocumentSGS - Control Cons Sales Invoice Line SGS - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4047045508 - Action 2176757286 - Property 2879900210" translate="yes" xml:space="preserve">
+          <source>Confirm</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">確認</target>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ConsSalesInvoiceDocumentSGS - Action Confirm - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4047045508 - Action 1002420131 - Property 2879900210" translate="yes" xml:space="preserve">
+          <source>Print &amp; Print Preview</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">印刷と印刷のプレビュー</target>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ConsSalesInvoiceDocumentSGS - Action Print - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4047045508 - Action 1093692467 - Property 2879900210" translate="yes" xml:space="preserve">
+          <source>Print to PDF</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">PDF に印刷</target>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ConsSalesInvoiceDocumentSGS - Action Print2PDF - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Page 4047045508 - Action 3404024483 - Property 2879900210" translate="yes" xml:space="preserve">
+          <source>Un-Confirm</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">確定を解除</target>
+          <note from="Xliff Generator" annotates="general" priority="3">Page ConsSalesInvoiceDocumentSGS - Action UnConfirm - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Report 1568909899 - Property 2879900210" translate="yes" xml:space="preserve">
+          <source>Consolidated invoice report</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">月次締め請求書レポート</target>
+          <note from="Xliff Generator" annotates="general" priority="3">Report Cons invoice report SGS - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 784499649 - Control 501563821 - Property 1295455071" translate="yes" xml:space="preserve">
+          <source>Specifies the value of the Consolidate Day field.</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">[日の連結] フィールドの値を指定します。</target>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Customer Card SGS - Control Consolidate Day - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 784499649 - Control 501563821 - Property 2879900210" translate="yes" xml:space="preserve">
+          <source>Consolidate Day</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">日の連結</target>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Customer Card SGS - Control Consolidate Day - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1118688717 - Action 777290960 - Property 2879900210" translate="yes" xml:space="preserve">
+          <source>Consolidated sales invoice</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">月次締め売上請求書</target>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension ExtendNavigationArea - Action Sales Document Entity - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1412737851 - Control 2866223638 - Property 1295455071" translate="yes" xml:space="preserve">
+          <source>Enable consolidated invoice function.</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">月次締め請求書機能を有効にします。</target>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Sales &amp; Receivables Setup SGS - Control Consolidated Invoice - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1412737851 - Control 2866223638 - Property 2879900210" translate="yes" xml:space="preserve">
+          <source>Consolidated Invoice (Syscom)</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">月次締め請求書 (Syscom)</target>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Sales &amp; Receivables Setup SGS - Control Consolidated Invoice - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 1412737851 - Control 2882471255 - Property 2879900210" translate="yes" xml:space="preserve">
+          <source>Consolidated Invoice No.</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">月次締め請求書番号</target>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Sales &amp; Receivables Setup SGS - Control Consolidated Invoice No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2102066954 - Control 3250580302 - Property 1295455071" translate="yes" xml:space="preserve">
+          <source>Enable for consolidating invoice.</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">月次締め請求書を有効化します。</target>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Sales Invoice SGS - Control Target of Consolidation  - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 2102066954 - Control 3250580302 - Property 2879900210" translate="yes" xml:space="preserve">
+          <source>Target of Consolidation</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">連結のターゲット</target>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Sales Invoice SGS - Control Target of Consolidation  - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3419505971 - Control 3250580302 - Property 1295455071" translate="yes" xml:space="preserve">
+          <source>Enable for consolidating invoice.</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">月次締め請求書を有効化します。</target>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Sales Order SGS - Control Target of Consolidation  - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 3419505971 - Control 3250580302 - Property 2879900210" translate="yes" xml:space="preserve">
+          <source>Target of Consolidation</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">連結のターゲット</target>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension Sales Order SGS - Control Target of Consolidation  - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 3469572661 - Field 501563821 - Property 2879900210" translate="yes" xml:space="preserve">
+          <source>Consolidate Day</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">日の連結</target>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Customer SGS - Field Consolidate Day - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1412737851 - Field 2866223638 - Property 2879900210" translate="yes" xml:space="preserve">
+          <source>Consolidated Invoice</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">月次締め請求書</target>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Sales &amp; Receivables Setup SGS - Field Consolidated Invoice - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 1412737851 - Field 2882471255 - Property 2879900210" translate="yes" xml:space="preserve">
+          <source>Consolidated Invoice No.</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">月次締め請求書番号</target>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Sales &amp; Receivables Setup SGS - Field Consolidated Invoice No. - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 127186844 - Field 618877142 - Property 2879900210" translate="yes" xml:space="preserve">
+          <source>Target of Consolidation</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">連結のターゲット</target>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Sales Header SGS - Field Target of Consolidation - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 885441947 - Field 2349604571 - Property 2879900210" translate="yes" xml:space="preserve">
+          <source>Previous Due Date</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">前の期日</target>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Sales Invoice Header SGS - Field Previous Due Date - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="TableExtension 885441947 - Field 618877142 - Property 2879900210" translate="yes" xml:space="preserve">
+          <source>Target of Consolidation</source>
+          <target state="needs-review-translation" state-qualifier="mt-suggestion">連結のターゲット</target>
+          <note from="Xliff Generator" annotates="general" priority="3">TableExtension Sales Invoice Header SGS - Field Target of Consolidation - Property Caption</note>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

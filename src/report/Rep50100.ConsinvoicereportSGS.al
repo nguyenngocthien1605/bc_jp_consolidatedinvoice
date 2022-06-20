@@ -23,18 +23,15 @@ report 50100 "Cons invoice report SGS"
             {
                 IncludeCaption = true;
             }
-            // column(FromDate_ConsSalesInvHeader; "From Date")
-            // {
-            //     IncludeCaption = true;
-            // }
-            column(ConsDate_ConsSalesInvHeader; "Consolidate Date")
+
+            column(ConsDate_ConsSalesInvHeader; Format("Consolidate Date", 0, '<Month,2>/<Day,2>/<Year>'))
             {
-                IncludeCaption = true;
             }
-            column(DueDate_ConsSalesInvHeader; "Due Date")
+
+            column(DueDate_ConsSalesInvHeader; Format("Due Date", 0, '<Month,2>/<Day,2>/<Year>'))
             {
-                IncludeCaption = true;
             }
+
 
             column(Status_ConsSalesInvHeader; Status)
             {
@@ -59,14 +56,13 @@ report 50100 "Cons invoice report SGS"
                     IncludeCaption = true;
                 }
 
-                column(PostingDate_ConsSalesInvoiceLine; ConsSalesInvoiceLine."Posting Date")
+                column(PostingDate_ConsSalesInvoiceLine; Format(ConsSalesInvoiceLine."Posting Date", 0, '<Month,2>/<Day,2>/<Year>'))
                 {
-                    IncludeCaption = true;
                 }
-                column(DueDate_ConsSalesInvoiceLine; ConsSalesInvoiceLine."Due Date")
+                column(DueDate_ConsSalesInvoiceLine; Format(ConsSalesInvoiceLine."Due Date", 0, '<Month,2>/<Day,2>/<Year>'))
                 {
-                    IncludeCaption = true;
                 }
+
 
                 column(InvoiceAmount_ConsSalesInvoiceLine; ConsSalesInvoiceLine."Child Sales Invoice Amount")
                 {

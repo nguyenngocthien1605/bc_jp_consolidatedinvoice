@@ -23,12 +23,12 @@ page 50103 "ConsSalesInvoiceDocumentSGS"
                     ApplicationArea = All;
                 }
 
-                field("From Date"; rec."From Date")
-                {
-                    ApplicationArea = All;
-                }
+                // field("From Date"; rec."From Date")
+                // {
+                //     ApplicationArea = All;
+                // }
 
-                field("To Date"; rec."To Date")
+                field("Consolidate Date"; rec."Consolidate Date")
                 {
                     ApplicationArea = All;
                 }

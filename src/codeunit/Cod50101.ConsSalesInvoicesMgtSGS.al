@@ -26,12 +26,14 @@ codeunit 50101 "Cons Sales Invoices Mgt SGS"
                     SalesInvoice.Get(ConsSalesInvoiceLine."Child Sales Invoice");
                     SalesInvoice."Due Date" := SalesInvoice."Previous Due Date";
                     SalesInvoice."Previous Due Date" := 0D;
+                    SalesInvoice."Is Consolidated" := false;
                     SalesInvoice.Modify(false);
                     ConsSalesInvoiceLine.Delete(false);
                 until ConsSalesInvoiceLine.Next() = 0;
             end;
             ConsSalesInvoiceHeader."Status" := ConsStatus::"Un-Confirmed";
             ConsSalesInvoiceHeader."Due Date" := 0D;
+
             ConsSalesInvoiceHeader.Modify();
             Commit();
         end
@@ -59,12 +61,13 @@ codeunit 50101 "Cons Sales Invoices Mgt SGS"
 
         Customer.Get(ConsSalesInvoiceHeader."Customer No.");
         PaymentTerm.Get(Customer."Payment Terms Code");
-        ConsDueDate := CalcDate(PaymentTerm."Due Date Calculation", ConsSalesInvoiceHeader."To Date");
+        ConsDueDate := CalcDate(PaymentTerm."Due Date Calculation", ConsSalesInvoiceHeader."Consolidate Date");
 
         line := 1;
-        SalesInvoice.SetRange("Bill-to Customer No.", ConsSalesInvoiceHeader."Customer No.");
-        SalesInvoice.SetFilter("Posting Date", '%1..%2', ConsSalesInvoiceHeader."From Date", ConsSalesInvoiceHeader."To Date");
         SalesInvoice.SetRange("Target of Consolidation", true);
+        SalesInvoice.SetRange("Is Consolidated", false);
+        SalesInvoice.SetRange("Bill-to Customer No.", ConsSalesInvoiceHeader."Customer No.");
+        SalesInvoice.SetFilter("Posting Date", '..%1', ConsSalesInvoiceHeader."Consolidate Date");
 
         if SalesInvoice.FindSet() then begin
 
@@ -74,6 +77,7 @@ codeunit 50101 "Cons Sales Invoices Mgt SGS"
 
                 SalesInvoice."Previous Due Date" := SalesInvoice."Due Date";
                 SalesInvoice."Due Date" := ConsDueDate;
+                SalesInvoice."Is Consolidated" := true;
                 SalesInvoice.Modify();
 
                 ConsSalesInvoiceLine.Reset();

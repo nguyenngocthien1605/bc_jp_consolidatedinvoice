@@ -1,4 +1,4 @@
-pageextension 50120 "ExtendNavigationArea" extends "Order Processor Role Center"
+pageextension 50120 "ExtendNavigationArea" extends "Business Manager Role Center"
 {
 
     actions
@@ -15,7 +15,7 @@ pageextension 50120 "ExtendNavigationArea" extends "Order Processor Role Center"
 
 
             //Creates a sub-menu
-            group("Consolidated sales invoice")
+            group("JP Localization")
             {
                 action("Sales Document Entity")
                 {

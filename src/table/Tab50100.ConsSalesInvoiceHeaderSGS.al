@@ -41,7 +41,7 @@ table 50100 "Cons Sales Invoice Header SGS"
 
 
 
-                if ("From Date" = 0D) and ("To Date" = 0D) AND ("Customer No." <> '') then begin
+                if ("Consolidate Date" = 0D) AND ("Customer No." <> '') then begin
                     localCustomer.Get(rec."Customer No.");
                     consDay := localCustomer."Consolidate Day";
                     currentWorkDay := System.Date2DMY(WorkDate(), 1);
@@ -62,8 +62,8 @@ table 50100 "Cons Sales Invoice Header SGS"
                         // strDateExp := '<-CM+1M+' + Format(consDay) + 'D>';
                         // rec."To Date" := CalcDate(strDateExp, WorkDate());
 
-                        rec."From Date" := getDate(consDay, currentWorkMonth, currentWorkYear);
-                        rec."To Date" := getDate(consDay, currentWorkMonth + 1, currentWorkYear);
+                        //rec."From Date" := getDate(consDay, currentWorkMonth, currentWorkYear);
+                        rec."Consolidate Date" := getDate(consDay, currentWorkMonth + 1, currentWorkYear);
 
 
                     end else begin
@@ -71,8 +71,8 @@ table 50100 "Cons Sales Invoice Header SGS"
                         // rec."From Date" := CalcDate(strDateExp, WorkDate());
                         // strDateExp := '<-CM+' + Format(consDay) + 'D>';
                         // rec."To Date" := CalcDate(strDateExp, WorkDate());
-                        rec."From Date" := getDate(consDay, currentWorkMonth - 1, currentWorkYear);
-                        rec."To Date" := getDate(consDay, currentWorkMonth, currentWorkYear);
+                        //rec."From Date" := getDate(consDay, currentWorkMonth - 1, currentWorkYear);
+                        rec."Consolidate Date" := getDate(consDay, currentWorkMonth, currentWorkYear);
 
                     end;
                 end;
@@ -82,19 +82,19 @@ table 50100 "Cons Sales Invoice Header SGS"
 
         }
 
-        field(20; "From Date"; Date)
-        {
-            Caption = 'From Date';
-        }
+        // field(20; "From Date"; Date)
+        // {
+        //     Caption = 'From Date';
+        // }
 
-        field(30; "To Date"; Date)
+        field(30; "Consolidate Date"; Date)
         {
-            Caption = 'To Date';
+            Caption = 'Consolidate Date';
         }
 
         field(40; "Due Date"; Date)
         {
-            Caption = 'Due Date (Cons Inv)';
+            Caption = 'Due Date (Cons. Inv)';
         }
 
 

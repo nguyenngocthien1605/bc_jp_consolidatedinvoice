@@ -14,5 +14,12 @@ tableextension 50103 "Sales Invoice Header SGS" extends "Sales Invoice Header"//
             Caption = 'Previous Due Date';
 
         }
+
+        field(50103; "Is Consolidated"; Boolean)
+        {
+            Caption = 'Is Consolidated';
+
+        }
+
     }
 }

@@ -27,13 +27,13 @@ page 50100 "Cons Sales Invoice List SGS"
 
                 }
 
-                field("From Date"; rec."From Date")
-                {
-                    ApplicationArea = All;
+                // field("From Date"; rec."From Date")
+                // {
+                //     ApplicationArea = All;
 
-                }
+                // }
 
-                field("To Date"; rec."To Date")
+                field("Cons. Date"; rec."Consolidate Date")
                 {
                     ApplicationArea = All;
 

@@ -23,11 +23,11 @@ report 50100 "Cons invoice report SGS"
             {
                 IncludeCaption = true;
             }
-            column(FromDate_ConsSalesInvHeader; "From Date")
-            {
-                IncludeCaption = true;
-            }
-            column(ToDate_ConsSalesInvHeader; "To Date")
+            // column(FromDate_ConsSalesInvHeader; "From Date")
+            // {
+            //     IncludeCaption = true;
+            // }
+            column(ConsDate_ConsSalesInvHeader; "Consolidate Date")
             {
                 IncludeCaption = true;
             }
@@ -58,6 +58,11 @@ report 50100 "Cons invoice report SGS"
                 {
                     IncludeCaption = true;
                 }
+
+                column(PostingDate_ConsSalesInvoiceLine; ConsSalesInvoiceLine."Posting Date")
+                {
+                    IncludeCaption = true;
+                }
                 column(DueDate_ConsSalesInvoiceLine; ConsSalesInvoiceLine."Due Date")
                 {
                     IncludeCaption = true;
@@ -73,6 +78,7 @@ report 50100 "Cons invoice report SGS"
                 begin
                     CalcFields("Child Sales Invoice Amount");
                     CalcFields("Due Date");
+                    CalcFields("Posting Date");
                 end;
             }
         }

@@ -27,8 +27,8 @@ pageextension 50102 "Sales Order SGS" extends "Sales Order"//42
         rec."Target of Consolidation" := setTargetConsolidation;
     end;
 
-    var
-        enableTargetConsolidation: Boolean;
+    // var
+    //     enableTargetConsolidation: Boolean;
 
     local procedure setTargetConsolidation(): Boolean
     var

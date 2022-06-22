@@ -1,7 +1,7 @@
-report 50100 "Cons invoice report SGS"
+report 50100 "Cons sales invoice report SGS"
 {
 
-    Caption = 'Consolidated invoice report';
+    Caption = 'Consolidated sales invoice report';
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;
 
@@ -103,7 +103,7 @@ report 50100 "Cons invoice report SGS"
         layout(WordLayout)
         {
             Type = Word;
-            LayoutFile = 'Layout\ConsInvoiceSGSListWord.docx';
+            LayoutFile = 'Layout\ConsSalesInvoiceSGSListWord.docx';
         }
 
     }

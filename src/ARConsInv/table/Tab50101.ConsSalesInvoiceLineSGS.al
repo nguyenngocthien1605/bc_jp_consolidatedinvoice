@@ -1,6 +1,5 @@
 table 50101 "Cons Sales Invoice Line SGS"
 {
-    DataClassification = ToBeClassified;
 
     fields
     {

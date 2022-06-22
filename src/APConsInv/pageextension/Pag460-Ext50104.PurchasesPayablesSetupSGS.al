@@ -1,4 +1,4 @@
-pageextension 50100 "Sales & Receivables Setup SGS" extends "Sales & Receivables Setup" //459
+pageextension 50104 "Purchases & Payables Setup SGS" extends "Purchases & Payables Setup" //460
 {
     layout
     {
@@ -10,17 +10,9 @@ pageextension 50100 "Sales & Receivables Setup SGS" extends "Sales & Receivables
                 Caption = 'Consolidated Invoice (Syscom)';
                 ToolTip = 'Enable consolidated invoice function.';
                 ApplicationArea = All;
-                trigger OnValidate()
-                begin
-                    if Rec."Consolidated Invoice" then
-                        ConsolidateInvoice_SGS := true
-                    else
-                        ConsolidateInvoice_SGS := false;
-
-                end;
             }
         }
-        addafter("Customer Nos.")
+        addafter("Number Series")
         {
             field("Consolidated Invoice No."; rec."Consolidated Invoice No.")
             {
@@ -30,12 +22,5 @@ pageextension 50100 "Sales & Receivables Setup SGS" extends "Sales & Receivables
         }
     }
 
-    actions
-    {
-        // Add changes to page actions here
-    }
-
-    var
-        ConsolidateInvoice_SGS: Boolean;
 
 }

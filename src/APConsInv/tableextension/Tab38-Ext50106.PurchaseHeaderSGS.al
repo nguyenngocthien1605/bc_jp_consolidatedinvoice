@@ -1,4 +1,4 @@
-tableextension 50102 "Sales Header SGS" extends "Sales Header"
+tableextension 50106 "Purchase Header SGS" extends "Purchase Header"//38
 {
     fields
     {
@@ -9,11 +9,10 @@ tableextension 50102 "Sales Header SGS" extends "Sales Header"
 
         }
 
-        modify("Sell-to Customer No.")
+        modify("Buy-from Vendor No.")
         {
             trigger OnAfterValidate()
             begin
-                //Message('New Sell-to Customer Name is ' + "Sell-to Customer Name");
                 rec."Target of Consolidation" := setTargetConsolidation;
             end;
         }
@@ -21,12 +20,12 @@ tableextension 50102 "Sales Header SGS" extends "Sales Header"
 
     local procedure setTargetConsolidation(): Boolean
     var
-        customer: Record Customer;
+        vendor: Record Vendor;
         retVal: Boolean;
     begin
-        customer.get(rec."Sell-to Customer No.");
+        vendor.get(rec."Buy-from Vendor No.");
 
-        if customer."Consolidate Day" <> 0 then begin
+        if vendor."Consolidate Day" <> 0 then begin
 
             retVal := true;
 
@@ -41,9 +40,6 @@ tableextension 50102 "Sales Header SGS" extends "Sales Header"
         exit(retVal);
 
     end;
-
-    var
-        enableTargetConsolidation: Boolean;
 
 }
 

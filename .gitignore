@@ -6,3 +6,4 @@ rad.json
 setting.json
 *.g.xlf
 .vscode
+extensionsPermissionSet.xml

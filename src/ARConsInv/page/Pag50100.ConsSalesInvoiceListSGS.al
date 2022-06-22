@@ -27,13 +27,13 @@ page 50100 "Cons Sales Invoice List SGS"
 
                 }
 
-                field("From Date"; rec."From Date")
-                {
-                    ApplicationArea = All;
+                // field("From Date"; rec."From Date")
+                // {
+                //     ApplicationArea = All;
 
-                }
+                // }
 
-                field("To Date"; rec."To Date")
+                field("Cons. Date"; rec."Consolidate Date")
                 {
                     ApplicationArea = All;
 
@@ -105,7 +105,7 @@ page 50100 "Cons Sales Invoice List SGS"
                     trigger OnAction()
                     var
                         ConsSalesInvoiceHeaderRec: Record "Cons Sales Invoice Header SGS";
-                        ToPrintReport: Report "Cons invoice report SGS";
+                        ToPrintReport: Report "Cons sales invoice report SGS";
                     begin
 
                         ConsSalesInvoiceHeaderRec.SetCurrentKey("No.");
@@ -125,7 +125,7 @@ page 50100 "Cons Sales Invoice List SGS"
                     begin
                         ConsSalesInvoiceHeaderRec.SetCurrentKey("No.");
                         ConsSalesInvoiceHeaderRec.SetFilter("No.", Rec."No.");
-                        Report.RunModal(Report::"Cons invoice report SGS", false, false, ConsSalesInvoiceHeaderRec);
+                        Report.RunModal(Report::"Cons sales invoice report SGS", false, false, ConsSalesInvoiceHeaderRec);
 
                     end;
                 }

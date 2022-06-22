@@ -3,7 +3,8 @@ codeunit 50101 "Cons Sales Invoices Mgt SGS"
     Subtype = Normal;
 
     Permissions = TableData "Sales Invoice Header" = imd,
-                    tabledata "Cons Sales Invoice Line SGS" = imd;
+                    tabledata "Cons Sales Invoice Line SGS" = imd,
+                        tabledata "Cust. Ledger Entry" = m;
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post", 'OnAfterSalesInvHeaderInsert', '', false, false)]
     local procedure UpdateConsSalesInvOnAfterSalesInvHeaderInsert(var SalesInvHeader: Record "Sales Invoice Header"; SalesHeader: Record "Sales Header"; CommitIsSuppressed: Boolean; WhseShip: Boolean; WhseReceive: Boolean; var TempWhseShptHeader: Record "Warehouse Shipment Header"; var TempWhseRcptHeader: Record "Warehouse Receipt Header"; PreviewMode: Boolean);
@@ -16,22 +17,38 @@ codeunit 50101 "Cons Sales Invoices Mgt SGS"
     var
         ConsSalesInvoiceLine: Record "Cons Sales Invoice Line SGS";
         SalesInvoice: Record "Sales Invoice Header";
-
+        CustLedgEntry: Record "Cust. Ledger Entry";
     begin
         if (ConsSalesInvoiceHeader.Status = ConsStatus::"Confirmed") then begin
             // update Due Date back to previous value for child sales invoice
             ConsSalesInvoiceLine.SetRange("Document No.", ConsSalesInvoiceHeader."No.");
             if ConsSalesInvoiceLine.FindSet() then begin
+
                 repeat
+
+                    //Update table "Sales Invoice Header" => fields: "Due Date"; "Previous Due Date"
                     SalesInvoice.Get(ConsSalesInvoiceLine."Child Sales Invoice");
                     SalesInvoice."Due Date" := SalesInvoice."Previous Due Date";
                     SalesInvoice."Previous Due Date" := 0D;
-                    SalesInvoice.Modify(false);
+                    SalesInvoice."Is Consolidated" := false;
+                    SalesInvoice.Modify();
+
+                    //Update table "Cust. Ledger Entry" => fields: "Due Date"
+                    CustLedgEntry.SetCurrentKey("Entry No.");
+                    CustLedgEntry.SetRange("Entry No.", SalesInvoice."Cust. Ledger Entry No.");
+
+                    if (CustLedgEntry.Find('-')) then begin
+                        CustLedgEntry."Due Date" := SalesInvoice."Due Date";
+                        CustLedgEntry.Modify();
+                    end;
+
                     ConsSalesInvoiceLine.Delete(false);
+
                 until ConsSalesInvoiceLine.Next() = 0;
             end;
             ConsSalesInvoiceHeader."Status" := ConsStatus::"Un-Confirmed";
             ConsSalesInvoiceHeader."Due Date" := 0D;
+
             ConsSalesInvoiceHeader.Modify();
             Commit();
         end
@@ -51,6 +68,7 @@ codeunit 50101 "Cons Sales Invoices Mgt SGS"
         PaymentTerm: Record "Payment Terms";
         line: Integer;
         ConsDueDate: Date;
+        CustLedgEntry: Record "Cust. Ledger Entry";
     begin
 
         if (ConsSalesInvoiceHeader.Status = ConsStatus::Confirmed) then begin
@@ -59,35 +77,54 @@ codeunit 50101 "Cons Sales Invoices Mgt SGS"
 
         Customer.Get(ConsSalesInvoiceHeader."Customer No.");
         PaymentTerm.Get(Customer."Payment Terms Code");
-        ConsDueDate := CalcDate(PaymentTerm."Due Date Calculation", ConsSalesInvoiceHeader."To Date");
+        ConsDueDate := CalcDate(PaymentTerm."Due Date Calculation", ConsSalesInvoiceHeader."Consolidate Date");
 
         line := 1;
-        SalesInvoice.SetRange("Bill-to Customer No.", ConsSalesInvoiceHeader."Customer No.");
-        SalesInvoice.SetFilter("Posting Date", '%1..%2', ConsSalesInvoiceHeader."From Date", ConsSalesInvoiceHeader."To Date");
         SalesInvoice.SetRange("Target of Consolidation", true);
+        SalesInvoice.SetRange("Is Consolidated", false);
+        SalesInvoice.SetRange("Bill-to Customer No.", ConsSalesInvoiceHeader."Customer No.");
+        SalesInvoice.SetFilter("Posting Date", '..%1', ConsSalesInvoiceHeader."Consolidate Date");
 
         if SalesInvoice.FindSet() then begin
 
             ConsSalesInvoiceLine.SetRange("Document No.", ConsSalesInvoiceHeader."No.");
             ConsSalesInvoiceLine.DeleteAll();
+
             repeat
 
+                //Update table "Cust. Ledger Entry" => fields: "Due Date"
+                CustLedgEntry.SetCurrentKey("Entry No.");
+                CustLedgEntry.SetRange("Entry No.", SalesInvoice."Cust. Ledger Entry No.");
+
+                if (CustLedgEntry.Find('-')) then begin
+                    CustLedgEntry."Due Date" := ConsDueDate;
+                    CustLedgEntry.Modify();
+                end;
+
+                //Update table "Sales Invoice Header" => fields: "Due Date"; "Previous Due Date"
                 SalesInvoice."Previous Due Date" := SalesInvoice."Due Date";
                 SalesInvoice."Due Date" := ConsDueDate;
+                SalesInvoice."Is Consolidated" := true;
                 SalesInvoice.Modify();
 
+                //Insert table "Cons Sales Invoice Line SGS"
                 ConsSalesInvoiceLine.Reset();
                 ConsSalesInvoiceLine."Document No." := ConsSalesInvoiceHeader."No.";
                 ConsSalesInvoiceLine."Line No." := line;
                 ConsSalesInvoiceLine."Child Sales Invoice" := SalesInvoice."No.";
                 ConsSalesInvoiceLine.Insert();
+
                 line := line + 1;
 
             until SalesInvoice.Next() = 0;
 
+            //Update table "Cons Sales Invoice Header SGS"
             ConsSalesInvoiceHeader."Status" := ConsStatus::Confirmed;
             ConsSalesInvoiceHeader."Due Date" := ConsDueDate;
             ConsSalesInvoiceHeader.Modify();
+
+
+
             Commit();
 
         end;

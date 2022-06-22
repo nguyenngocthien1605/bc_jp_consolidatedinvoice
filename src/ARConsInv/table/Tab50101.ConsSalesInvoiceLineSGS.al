@@ -1,6 +1,5 @@
 table 50101 "Cons Sales Invoice Line SGS"
 {
-    DataClassification = ToBeClassified;
 
     fields
     {
@@ -24,7 +23,14 @@ table 50101 "Cons Sales Invoice Line SGS"
 
         }
 
-        field(21; "Due Date"; Date)
+        field(21; "Posting Date"; Date)
+        {
+            Caption = 'Posting Date';
+            FieldClass = FlowField;
+            CalcFormula = lookup("Sales Invoice Header"."Posting Date" where("No." = field("Child Sales Invoice")));
+        }
+
+        field(22; "Due Date"; Date)
         {
             Caption = 'Due Date';
             FieldClass = FlowField;

@@ -1,4 +1,4 @@
-pageextension 50102 "Sales Order SGS" extends "Sales Order"//42
+pageextension 50106 "Purchase Order SGS" extends "Purchase Order"//50 "Purchase Order"
 {
     layout
     {
@@ -27,18 +27,18 @@ pageextension 50102 "Sales Order SGS" extends "Sales Order"//42
         rec."Target of Consolidation" := setTargetConsolidation;
     end;
 
-    var
-        enableTargetConsolidation: Boolean;
+    // var
+    //     enableTargetConsolidation: Boolean;
 
     local procedure setTargetConsolidation(): Boolean
     var
-        customer: Record Customer;
+        vendor: Record Vendor;
         retVal: Boolean;
     begin
-        customer.get(rec."Sell-to Customer No.");
+        vendor.get(rec."Buy-from Vendor No.");
 
 
-        if customer."Consolidate Day" <> 0 then begin
+        if vendor."Consolidate Day" <> 0 then begin
 
             retVal := true;
 

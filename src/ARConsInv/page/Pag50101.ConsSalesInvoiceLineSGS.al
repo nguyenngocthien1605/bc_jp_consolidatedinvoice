@@ -39,6 +39,12 @@ page 50101 "Cons Sales Invoice Line SGS"
                     end;
                 }
 
+                field("Posting Date"; rec."Posting Date")
+                {
+                    Caption = 'Posting Date';
+                    ApplicationArea = All;
+
+                }
                 field("Due Date"; rec."Due Date")
                 {
                     Caption = 'Due Date';

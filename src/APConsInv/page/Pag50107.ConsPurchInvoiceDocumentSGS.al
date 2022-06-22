@@ -1,9 +1,9 @@
-page 50103 "ConsSalesInvoiceDocumentSGS"
+page 50107 "ConsPurchInvoiceDocumentSGS"
 {
-    Caption = 'Cons Sales Invoice Document';
+    Caption = 'Consolidated Purchase Invoice Document';
     PageType = ListPlus;
     RefreshOnActivate = true;
-    SourceTable = "Cons Sales Invoice Header SGS";
+    SourceTable = "Cons Purch Invoice Header SGS";
     Editable = false;
 
     layout
@@ -18,17 +18,17 @@ page 50103 "ConsSalesInvoiceDocumentSGS"
 
                 }
 
-                field("Customer No."; rec."Customer No.")
+                field("Vendor No."; rec."Vendor No.")
                 {
                     ApplicationArea = All;
                 }
 
-                field("From Date"; rec."From Date")
-                {
-                    ApplicationArea = All;
-                }
+                // field("From Date"; rec."From Date")
+                // {
+                //     ApplicationArea = All;
+                // }
 
-                field("To Date"; rec."To Date")
+                field("Consolidate Date"; rec."Consolidate Date")
                 {
                     ApplicationArea = All;
                 }
@@ -45,11 +45,11 @@ page 50103 "ConsSalesInvoiceDocumentSGS"
             }
 
 
-            part("Cons Sales Invoice Line SGS"; "Cons Sales Invoice Line SGS")
+            part("Cons Purch Invoice Line SGS"; "Cons Purch Invoice Line SGS")
             {
                 Caption = 'Lines';
                 ApplicationArea = All;
-                Enabled = rec."Customer No." <> '';
+                Enabled = rec."Vendor No." <> '';
                 SubPageLink = "Document No." = field("No.");
 
             }
@@ -68,9 +68,9 @@ page 50103 "ConsSalesInvoiceDocumentSGS"
                 //Enabled = enableConfirm;
                 trigger OnAction()
                 var
-                    ConsSalesInvoiceMgt: Codeunit "Cons Sales Invoices Mgt SGS";
+                    ConsPurchInvoiceMgt: Codeunit "Cons Purch Invoices Mgt SGS";
                 begin
-                    ConsSalesInvoiceMgt.Confirm(Rec);
+                    ConsPurchInvoiceMgt.Confirm(Rec);
                 end;
             }
             action(UnConfirm)
@@ -81,9 +81,9 @@ page 50103 "ConsSalesInvoiceDocumentSGS"
 
                 trigger OnAction()
                 var
-                    ConsSalesInvoiceMgt: Codeunit "Cons Sales Invoices Mgt SGS";
+                    ConsPurchInvoiceMgt: Codeunit "Cons Purch Invoices Mgt SGS";
                 begin
-                    ConsSalesInvoiceMgt.UnConfirm(Rec);
+                    ConsPurchInvoiceMgt.UnConfirm(Rec);
                 end;
             }
 
@@ -93,13 +93,13 @@ page 50103 "ConsSalesInvoiceDocumentSGS"
                 ApplicationArea = All;
                 trigger OnAction()
                 var
-                    ConsSalesInvoiceHeaderRec: Record "Cons Sales Invoice Header SGS";
-                    ToPrintReport: Report "Cons invoice report SGS";
+                    ConsPurchInvoiceHeaderRec: Record "Cons Purch Invoice Header SGS";
+                    ToPrintReport: Report "Cons purch invoice report SGS";
                 begin
 
-                    ConsSalesInvoiceHeaderRec.SetCurrentKey("No.");
-                    ConsSalesInvoiceHeaderRec.SetFilter("No.", Rec."No.");
-                    ToPrintReport.SetTableView(ConsSalesInvoiceHeaderRec);
+                    ConsPurchInvoiceHeaderRec.SetCurrentKey("No.");
+                    ConsPurchInvoiceHeaderRec.SetFilter("No.", Rec."No.");
+                    ToPrintReport.SetTableView(ConsPurchInvoiceHeaderRec);
                     ToPrintReport.Run();
 
                 end;
@@ -111,11 +111,11 @@ page 50103 "ConsSalesInvoiceDocumentSGS"
                 ApplicationArea = All;
                 trigger OnAction()
                 var
-                    ConsSalesInvoiceHeaderRec: Record "Cons Sales Invoice Header SGS";
+                    ConsPurchInvoiceHeaderRec: Record "Cons Purch Invoice Header SGS";
                 begin
-                    ConsSalesInvoiceHeaderRec.SetCurrentKey("No.");
-                    ConsSalesInvoiceHeaderRec.SetFilter("No.", Rec."No.");
-                    Report.RunModal(Report::"Cons invoice report SGS", false, false, ConsSalesInvoiceHeaderRec);
+                    ConsPurchInvoiceHeaderRec.SetCurrentKey("No.");
+                    ConsPurchInvoiceHeaderRec.SetFilter("No.", Rec."No.");
+                    Report.RunModal(Report::"Cons purch invoice report SGS", false, false, ConsPurchInvoiceHeaderRec);
 
                 end;
             }

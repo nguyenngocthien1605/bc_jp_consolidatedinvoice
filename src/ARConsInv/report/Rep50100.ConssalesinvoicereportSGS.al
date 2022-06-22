@@ -1,7 +1,7 @@
-report 50100 "Cons invoice report SGS"
+report 50100 "Cons sales invoice report SGS"
 {
 
-    Caption = 'Consolidated invoice report';
+    Caption = 'Consolidated sales invoice report';
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;
 
@@ -23,18 +23,15 @@ report 50100 "Cons invoice report SGS"
             {
                 IncludeCaption = true;
             }
-            column(FromDate_ConsSalesInvHeader; "From Date")
+
+            column(ConsDate_ConsSalesInvHeader; Format("Consolidate Date", 0, '<Month,2>/<Day,2>/<Year>'))
             {
-                IncludeCaption = true;
             }
-            column(ToDate_ConsSalesInvHeader; "To Date")
+
+            column(DueDate_ConsSalesInvHeader; Format("Due Date", 0, '<Month,2>/<Day,2>/<Year>'))
             {
-                IncludeCaption = true;
             }
-            column(DueDate_ConsSalesInvHeader; "Due Date")
-            {
-                IncludeCaption = true;
-            }
+
 
             column(Status_ConsSalesInvHeader; Status)
             {
@@ -58,10 +55,14 @@ report 50100 "Cons invoice report SGS"
                 {
                     IncludeCaption = true;
                 }
-                column(DueDate_ConsSalesInvoiceLine; ConsSalesInvoiceLine."Due Date")
+
+                column(PostingDate_ConsSalesInvoiceLine; Format(ConsSalesInvoiceLine."Posting Date", 0, '<Month,2>/<Day,2>/<Year>'))
                 {
-                    IncludeCaption = true;
                 }
+                column(DueDate_ConsSalesInvoiceLine; Format(ConsSalesInvoiceLine."Due Date", 0, '<Month,2>/<Day,2>/<Year>'))
+                {
+                }
+
 
                 column(InvoiceAmount_ConsSalesInvoiceLine; ConsSalesInvoiceLine."Child Sales Invoice Amount")
                 {
@@ -73,6 +74,7 @@ report 50100 "Cons invoice report SGS"
                 begin
                     CalcFields("Child Sales Invoice Amount");
                     CalcFields("Due Date");
+                    CalcFields("Posting Date");
                 end;
             }
         }
@@ -101,7 +103,7 @@ report 50100 "Cons invoice report SGS"
         layout(WordLayout)
         {
             Type = Word;
-            LayoutFile = 'Layout\ConsInvoiceSGSListWord.docx';
+            LayoutFile = 'Layout\ConsSalesInvoiceSGSListWord.docx';
         }
 
     }

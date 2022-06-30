@@ -5,7 +5,7 @@ tableextension 50104 "Purchases & Payables Setup SGS" extends "Purchases & Payab
 
         field(50100; "Consolidated Invoice"; Boolean)
         {
-            Caption = 'Consolidated Invoice';
+            Caption = 'Consolidated Invoice (Syscom)';
             InitValue = false;
         }
 

@@ -52,32 +52,6 @@ page 50102 "Cons Sales Invoice Card SGS"
         }
     }
 
-    // actions
-    // {
-    //     area(Processing)
-    //     {
 
-    //         action(Generate)
-    //         {
-    //             Caption = '1. Confirm';
-    //             ApplicationArea = All;
-
-    //             trigger OnAction()
-    //             var
-    //                 ConsSalesInvoiceMgt: Codeunit "Cons Sales Invoices Mgt SGS";
-    //             begin
-    //                 ConsSalesInvoiceMgt.Confirm(Rec);
-    //             end;
-    //         }
-    //         action(Show)
-    //         {
-    //             Caption = '2. Open consolidated sales invoices details';
-    //             ApplicationArea = All;
-    //             RunObject = page "Cons Sales Invoice Line SGS";
-    //             RunPageLink = "Document No." = field("No.");
-
-    //         }
-    //     }
-    // }
 
 }

@@ -6,7 +6,7 @@ tableextension 50100 "Sales & Receivables Setup SGS" extends "Sales & Receivable
         // Add changes to table fields here
         field(50100; "Consolidated Invoice"; Boolean)
         {
-            Caption = 'Consolidated Invoice';
+            Caption = 'Consolidated Invoice (Syscom)';
             InitValue = false;
         }
 

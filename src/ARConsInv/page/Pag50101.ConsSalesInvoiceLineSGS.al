@@ -22,14 +22,12 @@ page 50101 "Cons Sales Invoice Line SGS"
                 // }
                 field("Line No."; rec."Line No.")
                 {
-                    Caption = 'Line No.';
                     ApplicationArea = All;
 
                 }
 
                 field("Child Sales Invoice"; rec."Child Sales Invoice")
                 {
-                    Caption = 'Sales Invoice';
                     ApplicationArea = All;
                     trigger OnDrillDown()
                     var
@@ -41,20 +39,17 @@ page 50101 "Cons Sales Invoice Line SGS"
 
                 field("Posting Date"; rec."Posting Date")
                 {
-                    Caption = 'Posting Date';
                     ApplicationArea = All;
 
                 }
                 field("Due Date"; rec."Due Date")
                 {
-                    Caption = 'Due Date';
                     ApplicationArea = All;
 
                 }
 
                 field("Child Sales Invoice Amount"; rec."Child Sales Invoice Amount")
                 {
-                    Caption = 'Sales Invoice Amount';
                     ApplicationArea = All;
 
                 }

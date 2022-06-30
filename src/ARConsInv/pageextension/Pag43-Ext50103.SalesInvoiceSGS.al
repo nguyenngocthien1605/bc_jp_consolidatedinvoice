@@ -10,7 +10,7 @@ pageextension 50103 "Sales Invoice SGS" extends "Sales Invoice"//43
             {
                 ToolTip = 'Enable for consolidating invoice.';
                 ApplicationArea = All;
-                Caption = 'Target of Consolidation';
+
 
             }
         }

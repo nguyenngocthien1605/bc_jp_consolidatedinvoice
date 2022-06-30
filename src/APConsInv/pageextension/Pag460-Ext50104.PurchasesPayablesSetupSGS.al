@@ -3,7 +3,7 @@ pageextension 50104 "Purchases & Payables Setup SGS" extends "Purchases & Payabl
     layout
     {
         // Add changes to page layout here
-        addlast(General)
+        addafter("Document Default Line Type")
         {
             field("Consolidated Invoice"; Rec."Consolidated Invoice")
             {

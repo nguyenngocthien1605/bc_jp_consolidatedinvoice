@@ -10,8 +10,6 @@ pageextension 50106 "Purchase Order SGS" extends "Purchase Order"//50 "Purchase 
             {
                 ToolTip = 'Enable for consolidating invoice.';
                 ApplicationArea = All;
-                Caption = 'Target of Consolidation';
-
 
             }
         }

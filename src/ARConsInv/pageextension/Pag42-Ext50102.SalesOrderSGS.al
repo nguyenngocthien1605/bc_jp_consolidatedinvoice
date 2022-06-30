@@ -10,7 +10,7 @@ pageextension 50102 "Sales Order SGS" extends "Sales Order"//42
             {
                 ToolTip = 'Enable for consolidating invoice.';
                 ApplicationArea = All;
-                Caption = 'Target of Consolidation';
+
 
 
             }

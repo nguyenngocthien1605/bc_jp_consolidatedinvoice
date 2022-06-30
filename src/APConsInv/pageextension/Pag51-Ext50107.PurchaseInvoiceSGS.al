@@ -10,7 +10,6 @@ pageextension 50107 "Purchase Invoice SGS" extends "Purchase Invoice"//51
             {
                 ToolTip = 'Enable for consolidating invoice.';
                 ApplicationArea = All;
-                Caption = 'Target of Consolidation';
 
             }
         }

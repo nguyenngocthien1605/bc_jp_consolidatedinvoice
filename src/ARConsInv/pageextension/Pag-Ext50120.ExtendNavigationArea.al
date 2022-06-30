@@ -6,13 +6,6 @@ pageextension 50120 "ExtendNavigationArea" extends "Business Manager Role Center
         addfirst(Sections)
         {
 
-            // action("JP Localization")
-            // {
-            //     RunObject = page "Cons Sales Invoice List SGS";
-            //     Caption = 'JP Localization';
-            //     ApplicationArea = All;
-            // }
-
 
             //Creates a sub-menu
             group("JP Localization")
@@ -21,14 +14,14 @@ pageextension 50120 "ExtendNavigationArea" extends "Business Manager Role Center
                 {
                     ApplicationArea = All;
                     RunObject = page "Cons Sales Invoice List SGS";
-                    Caption = 'Consolidated sales invoice list';
+                    Caption = 'Cons. sales invoice list';
                 }
 
                 action("Cons Purch Invoice List SGS")
                 {
                     ApplicationArea = All;
                     RunObject = page "Cons Purch Invoice List SGS";
-                    Caption = 'Consolidated purchase invoice list';
+                    Caption = 'Cons. purchase invoice list';
                 }
 
             }

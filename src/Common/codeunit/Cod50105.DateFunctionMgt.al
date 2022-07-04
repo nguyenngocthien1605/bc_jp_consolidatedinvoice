@@ -2,6 +2,31 @@ codeunit 50105 "Date Function Mgt"
 {
     Subtype = Normal;
 
+    procedure getDueDateByPaymentDayandCutoffDay(paymentDay: Integer; cutoffDay: Integer; consDate: Date): Date
+    var
+        consDate_Day: Integer;
+        consDate_Month: Integer;
+        dueDate_Month: Integer;
+        dueDate: Date;
+    begin
+        consDate_Day := Date2DMY(consDate, 1);
+        consDate_Month := Date2DMY(consDate, 2);
+
+        if (consDate_Day <= cutoffDay) then begin
+            dueDate_Month := consDate_Month + 1;
+        end
+        else begin
+            dueDate_Month := consDate_Month + 2;
+        end;
+
+        dueDate := getLastBusinessDate(paymentDay, dueDate_Month, Date2DMY(consDate, 3));
+        exit(dueDate);
+    end;
+
+
+
+
+
 
     procedure getLastBusinessDate(Day: Integer; Month: Integer; Year: Integer): Date
     var

@@ -10,33 +10,37 @@ pageextension 50108 "Payment Terms SGS" extends "Payment Terms" //4
             {
                 ApplicationArea = All;
             }
-            field("Num Of Days"; Rec."Num Of Days")
-            {
-                ApplicationArea = All;
-            }
-            field("Num Of Months"; Rec."Num Of Months")
+            // field("Num Of Days"; Rec."Num Of Days")
+            // {
+            //     ApplicationArea = All;
+            // }
+            // field("Num Of Months"; Rec."Num Of Months")
+            // {
+            //     ApplicationArea = All;
+            // }
+            field("Payment Day"; Rec."Payment Day")
             {
                 ApplicationArea = All;
             }
         }
     }
-    actions
-    {
-        addlast(processing)
-        {
-            group("Process")
-            {
-                action(TestDueDate)
-                {
-                    ApplicationArea = All;
+    // actions
+    // {
+    //     addlast(processing)
+    //     {
+    //         group("Process")
+    //         {
+    //             action(TestDueDate)
+    //             {
+    //                 ApplicationArea = All;
 
-                    trigger OnAction()
-                    begin
-                        Dialog.Message('Test due date!');
-                    end;
-                }
-            }
-        }
-    }
+    //                 trigger OnAction()
+    //                 begin
+    //                     Dialog.Message('Test due date!');
+    //                 end;
+    //             }
+    //         }
+    //     }
+    // }
 
 }

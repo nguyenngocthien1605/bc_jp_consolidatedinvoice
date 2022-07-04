@@ -52,17 +52,6 @@ table 50102 "Cons Purch Invoice Header SGS"
                         Error('The customer %1 is not enabled for consolidated invoice.', rec."Vendor No.");
                     end;
 
-
-                    if consDay < currentWorkDay then begin
-
-                        rec."Consolidate Date" := getDate(consDay, currentWorkMonth + 1, currentWorkYear);
-
-
-                    end else begin
-
-                        rec."Consolidate Date" := getDate(consDay, currentWorkMonth, currentWorkYear);
-
-                    end;
                 end;
             end;
 
@@ -118,20 +107,6 @@ table 50102 "Cons Purch Invoice Header SGS"
         PurchSetup: Record "Purchases & Payables Setup";
         NoSeriesMgt: Codeunit NoSeriesManagement;
 
-    local procedure getDate(Day: Integer; Month: Integer; Year: Integer): Date
-    var
 
-    begin
-        if (Day in [30, 31]) and (Month = 2) then begin
-            exit(CalcDate('<CM>', DMY2Date(1, Month, Year)));
-
-        end;
-
-        if (Day = 31) and (Month in [4, 6, 9, 11]) then begin
-            exit(DMY2Date(30, Month, Year));
-        end;
-
-        exit(DMY2Date(Day, Month, Year));
-    end;
 
 }

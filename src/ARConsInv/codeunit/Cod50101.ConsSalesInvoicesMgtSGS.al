@@ -69,6 +69,8 @@ codeunit 50101 "Cons Sales Invoices Mgt SGS"
         line: Integer;
         ConsDueDate: Date;
         CustLedgEntry: Record "Cust. Ledger Entry";
+        DateFunctionMgt: Codeunit "Date Function Mgt";
+
     begin
 
         if (ConsSalesInvoiceHeader.Status = ConsStatus::Confirmed) then begin
@@ -77,7 +79,10 @@ codeunit 50101 "Cons Sales Invoices Mgt SGS"
 
         Customer.Get(ConsSalesInvoiceHeader."Customer No.");
         PaymentTerm.Get(Customer."Payment Terms Code");
-        ConsDueDate := CalcDate(PaymentTerm."Due Date Calculation", ConsSalesInvoiceHeader."Consolidate Date");
+        if (ConsSalesInvoiceHeader."Consolidate Date" = 0D) then begin
+            Error('Please enter Consolidated Date for sales consolidated invoice %1 .', ConsSalesInvoiceHeader."No.");
+        end;
+        ConsDueDate := DateFunctionMgt.getDueDateByPaymentDayandCutoffDay(PaymentTerm."Payment Day", PaymentTerm."CutOff Day", ConsSalesInvoiceHeader."Consolidate Date");
 
         line := 1;
         SalesInvoice.SetRange("Target of Consolidation", true);

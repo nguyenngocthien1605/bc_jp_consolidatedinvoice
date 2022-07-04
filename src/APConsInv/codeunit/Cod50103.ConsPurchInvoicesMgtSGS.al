@@ -72,6 +72,8 @@ codeunit 50103 "Cons Purch Invoices Mgt SGS"
         line: Integer;
         ConsDueDate: Date;
         VendLedgEntry: Record "Vendor Ledger Entry";
+        DateFunctionMgt: Codeunit "Date Function Mgt";
+
     begin
 
         if (ConsPurchInvoiceHeader.Status = ConsStatus::Confirmed) then begin
@@ -80,7 +82,10 @@ codeunit 50103 "Cons Purch Invoices Mgt SGS"
 
         Vendor.Get(ConsPurchInvoiceHeader."Vendor No.");
         PaymentTerm.Get(Vendor."Payment Terms Code");
-        ConsDueDate := CalcDate(PaymentTerm."Due Date Calculation", ConsPurchInvoiceHeader."Consolidate Date");
+        if (ConsPurchInvoiceHeader."Consolidate Date" = 0D) then begin
+            Error('Please enter Consolidated Date for purchase consolidated invoice %1 .', ConsPurchInvoiceHeader."No.");
+        end;
+        ConsDueDate := DateFunctionMgt.getDueDateByPaymentDayandCutoffDay(PaymentTerm."Payment Day", PaymentTerm."CutOff Day", ConsPurchInvoiceHeader."Consolidate Date");
 
         line := 1;
         PurchInvoice.SetRange("Target of Consolidation", true);

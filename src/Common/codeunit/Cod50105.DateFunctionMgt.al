@@ -19,14 +19,43 @@ codeunit 50105 "Date Function Mgt"
             dueDate_Month := consDate_Month + 2;
         end;
 
-        dueDate := getLastBusinessDate(paymentDay, dueDate_Month, Date2DMY(consDate, 3));
+        dueDate := getBusinessDate(DMY2Date(paymentDay, dueDate_Month, Date2DMY(consDate, 3)), true);
         exit(dueDate);
     end;
 
 
 
+    procedure getBusinessDate(checkDate: Date; isNextWorkingDate: boolean): Date
+    var
+        businessDate: Date;
+        CalendarMgmt: Codeunit "Calendar Management";
+        CompanyInformation: Record "Company Information";
+        CustomCalendarChange: Record "Customized Calendar Change";
+        IsNonworkingDay: Boolean;
+    begin
+        CompanyInformation.Get();
+        CompanyInformation.TESTFIELD("Base Calendar Code");
 
+        // CustomCalendarChange.Find('-');
+        CalendarMgmt.SetSource(CompanyInformation, CustomCalendarChange);
+        businessDate := checkDate;
 
+        repeat begin
+            IsNonworkingDay := CalendarMgmt.IsNonworkingDay(checkDate, CustomCalendarChange);
+            if (IsNonworkingDay = true) then begin
+                if (isNextWorkingDate = true) then begin
+                    businessDate := CalcDate('<+1D>', checkDate); // next day
+                end
+                else begin
+                    businessDate := CalcDate('<-1D>', checkDate); // previous day
+                end;
+                ;
+            end;
+
+        end until (IsNonworkingDay = false); // exit when businessDate is working day
+
+        exit(businessDate);
+    end;
 
     procedure getLastBusinessDate(Day: Integer; Month: Integer; Year: Integer): Date
     var

@@ -49,8 +49,6 @@ table 50100 "Cons Sales Invoice Header SGS"
                     currentWorkYear := System.Date2DMY(WorkDate(), 3);
 
 
-
-
                     if consDay = 0 then begin
                         Error('The customer %1 is not enabled for consolidated invoice.', rec."Customer No.");
                     end;
@@ -63,14 +61,28 @@ table 50100 "Cons Sales Invoice Header SGS"
 
         }
 
-        // field(20; "From Date"; Date)
-        // {
-        //     Caption = 'From Date';
-        // }
+
 
         field(30; "Consolidate Date"; Date)
         {
             Caption = 'Consolidate Date';
+            trigger OnValidate()
+            var
+                confirmReConsolidate: Boolean;
+                Text000: Label 'Do you want to re-consolidate this invoice %1 with new consolidated date %2?';
+                invoiceCodeUnitMgt: Codeunit "Cons Sales Invoices Mgt SGS";
+            begin
+                if ((rec.Status = ConsStatus::Confirmed) and (rec."Consolidate Date" <> xRec."Consolidate Date")) then begin
+                    confirmReConsolidate := Dialog.Confirm(Text000, true, rec."No.", rec."Consolidate Date");
+                    if (confirmReConsolidate = true) then begin
+                        invoiceCodeUnitMgt.UnConfirm(rec);
+                        invoiceCodeUnitMgt.Confirm(rec);
+                    end;
+
+                end;
+
+
+            end;
         }
 
         field(40; "Due Date"; Date)

@@ -85,7 +85,7 @@ codeunit 50103 "Cons Purch Invoices Mgt SGS"
         if (ConsPurchInvoiceHeader."Consolidate Date" = 0D) then begin
             Error('Please enter Consolidated Date for purchase consolidated invoice %1 .', ConsPurchInvoiceHeader."No.");
         end;
-        ConsDueDate := DateFunctionMgt.getDueDateByPaymentDayandCutoffDay(PaymentTerm."Payment Day", PaymentTerm."CutOff Day", ConsPurchInvoiceHeader."Consolidate Date");
+        ConsDueDate := DateFunctionMgt.getDueDateByPaymentDayandCutoffDay(PaymentTerm, ConsPurchInvoiceHeader."Consolidate Date");
 
         line := 1;
         PurchInvoice.SetRange("Target of Consolidation", true);

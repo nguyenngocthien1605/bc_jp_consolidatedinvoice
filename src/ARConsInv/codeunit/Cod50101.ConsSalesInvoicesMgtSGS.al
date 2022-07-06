@@ -83,7 +83,7 @@ codeunit 50101 "Cons Sales Invoices Mgt SGS"
             Error('Please enter Consolidated Date for sales consolidated invoice %1 .', ConsSalesInvoiceHeader."No.");
         end;
         // Message('[%1] Payment Day: %2 ; CutOff Day: %3', PaymentTerm.Code, PaymentTerm."Payment Day", PaymentTerm."CutOff Day");
-        ConsDueDate := DateFunctionMgt.getDueDateByPaymentDayandCutoffDay(PaymentTerm."Payment Day", PaymentTerm."CutOff Day", ConsSalesInvoiceHeader."Consolidate Date");
+        ConsDueDate := DateFunctionMgt.getDueDateByPaymentDayandCutoffDay(PaymentTerm, ConsSalesInvoiceHeader."Consolidate Date");
 
         line := 1;
         SalesInvoice.SetRange("Target of Consolidation", true);

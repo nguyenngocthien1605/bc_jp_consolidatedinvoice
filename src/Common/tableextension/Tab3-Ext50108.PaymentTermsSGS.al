@@ -23,6 +23,13 @@ tableextension 50108 "Payment Terms SGS" extends "Payment Terms" //3
                 end;
             end;
         }
+
+        field(50121; "Cons. Due Date Calculate"; Enum "Cons. Due Date Calculate")
+        {
+            DataClassification = ToBeClassified;
+            InitValue = "Previous Working Day";
+
+        }
         // field(50102; "Num Of Days"; Integer)
         // {
         //     Caption = 'Number of days';

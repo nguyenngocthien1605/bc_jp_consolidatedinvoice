@@ -80,8 +80,12 @@ codeunit 50103 "Cons Purch Invoices Mgt SGS"
             Error('Invoice %1 for customer %2 is already confirmed.', ConsPurchInvoiceHeader."No.", ConsPurchInvoiceHeader."Vendor No.");
         end;
 
-        Vendor.Get(ConsPurchInvoiceHeader."Vendor No.");
-        PaymentTerm.Get(Vendor."Payment Terms Code");
+        PaymentTerm.Get(ConsPurchInvoiceHeader."Payment Terms");
+        if (PaymentTerm.IsEmpty) then begin
+            Vendor.Get(ConsPurchInvoiceHeader."Vendor No.");
+            PaymentTerm.Get(Vendor."Payment Terms Code");
+        end;
+
         if (ConsPurchInvoiceHeader."Consolidate Date" = 0D) then begin
             Error('Please enter Consolidated Date for purchase consolidated invoice %1 .', ConsPurchInvoiceHeader."No.");
         end;

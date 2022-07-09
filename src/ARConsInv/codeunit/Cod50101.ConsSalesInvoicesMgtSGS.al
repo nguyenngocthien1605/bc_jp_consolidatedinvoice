@@ -77,12 +77,15 @@ codeunit 50101 "Cons Sales Invoices Mgt SGS"
             Error('Invoice %1 for customer %2 is already confirmed.', ConsSalesInvoiceHeader."No.", ConsSalesInvoiceHeader."Customer No.");
         end;
 
-        Customer.Get(ConsSalesInvoiceHeader."Customer No.");
-        PaymentTerm.Get(Customer."Payment Terms Code");
+        PaymentTerm.Get(ConsSalesInvoiceHeader."Payment Terms");
+        if (PaymentTerm.IsEmpty) then begin
+            Customer.Get(ConsSalesInvoiceHeader."Customer No.");
+            PaymentTerm.Get(Customer."Payment Terms Code");
+        end;
+
         if (ConsSalesInvoiceHeader."Consolidate Date" = 0D) then begin
             Error('Please enter Consolidated Date for sales consolidated invoice %1 .', ConsSalesInvoiceHeader."No.");
         end;
-        // Message('[%1] Payment Day: %2 ; CutOff Day: %3', PaymentTerm.Code, PaymentTerm."Payment Day", PaymentTerm."CutOff Day");
         ConsDueDate := DateFunctionMgt.getDueDateByPaymentDayandCutoffDay(PaymentTerm, ConsSalesInvoiceHeader."Consolidate Date");
 
         line := 1;

@@ -40,7 +40,10 @@ page 50102 "Cons Sales Invoice Card SGS"
                 {
                     ApplicationArea = All;
                 }
-
+                field("Payment Terms"; rec."Payment Terms")
+                {
+                    ApplicationArea = All;
+                }
                 field("Status"; rec.Status)
                 {
                     ApplicationArea = All;

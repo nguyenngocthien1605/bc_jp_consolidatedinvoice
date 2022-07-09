@@ -44,10 +44,10 @@ table 50102 "Cons Purch Invoice Header SGS"
                 if ("Consolidate Date" = 0D) AND ("Vendor No." <> '') then begin
                     localVendor.Get(rec."Vendor No.");
                     consDay := localVendor."Consolidate Day";
-                    currentWorkDay := System.Date2DMY(WorkDate(), 1);
-                    currentWorkMonth := System.Date2DMY(WorkDate(), 2);
-                    currentWorkYear := System.Date2DMY(WorkDate(), 3);
-
+                    // currentWorkDay := System.Date2DMY(WorkDate(), 1);
+                    // currentWorkMonth := System.Date2DMY(WorkDate(), 2);
+                    // currentWorkYear := System.Date2DMY(WorkDate(), 3);
+                    rec."Payment Terms" := localVendor."Payment Terms Code";
                     if consDay = 0 then begin
                         Error('The customer %1 is not enabled for consolidated invoice.', rec."Vendor No.");
                     end;
@@ -86,6 +86,11 @@ table 50102 "Cons Purch Invoice Header SGS"
             Caption = 'Due Date (Cons. Inv)';
         }
 
+        field(50; "Payment Terms"; Code[10])
+        {
+            Caption = 'Payment Terms';
+            TableRelation = "Payment Terms";
+        }
 
         field(90; "Status"; Enum ConsStatus)
         {

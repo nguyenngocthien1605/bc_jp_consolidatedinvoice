@@ -24,12 +24,6 @@ page 50106 "Cons Purch Invoice Card SGS"
 
                 }
 
-                // field("From Date"; rec."From Date")
-                // {
-                //     ApplicationArea = All;
-
-                // }
-
                 field("Consolidate Date"; rec."Consolidate Date")
                 {
                     ApplicationArea = All;
@@ -37,6 +31,11 @@ page 50106 "Cons Purch Invoice Card SGS"
                 }
 
                 field("Due Date"; rec."Due Date")
+                {
+                    ApplicationArea = All;
+                }
+
+                field("Payment Terms"; rec."Payment Terms")
                 {
                     ApplicationArea = All;
                 }

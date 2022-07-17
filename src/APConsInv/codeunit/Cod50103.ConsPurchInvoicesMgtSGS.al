@@ -10,8 +10,26 @@ codeunit 50103 "Cons Purch Invoices Mgt SGS"
     //Press Shift + Alt + E to generate snipet
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Purch.-Post", 'OnAfterPurchInvHeaderInsert', '', false, false)]
     local procedure OnAfterPurchInvHeaderInsert(var PurchInvHeader: Record "Purch. Inv. Header"; var PurchHeader: Record "Purchase Header"; PreviewMode: Boolean);
+    var
+        Vendor: Record Vendor;
+        PaymentTerm: Record "Payment Terms";
+        line: Integer;
+        DueDate: Date;
+        VendLedgEntry: Record "Vendor Ledger Entry";
+        DateFunctionMgt: Codeunit "Date Function Mgt";
     begin
         PurchInvHeader."Target of Consolidation" := PurchHeader."Target of Consolidation";
+        //<2022.07.17 => update "Due Date" following Consolidated invoice due date>
+        PaymentTerm.Get(PurchInvHeader."Payment Terms Code");
+        if (PaymentTerm.IsEmpty) then begin
+            Vendor.Get(PurchInvHeader."Pay-to Vendor No.");
+            PaymentTerm.Get(Vendor."Payment Terms Code");
+        end;
+
+        DueDate := DateFunctionMgt.getDueDateByPaymentDayandCutoffDay(PaymentTerm, PurchInvHeader."Posting Date");
+        PurchInvHeader."Due Date" := DueDate;
+        //<2022.07.17
+
         PurchInvHeader.Modify();
     end;
 

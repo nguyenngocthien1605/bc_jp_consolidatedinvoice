@@ -21,5 +21,6 @@ tableextension 50103 "Sales Invoice Header SGS" extends "Sales Invoice Header"//
 
         }
 
+
     }
 }

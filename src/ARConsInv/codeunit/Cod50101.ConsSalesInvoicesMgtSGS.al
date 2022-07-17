@@ -8,8 +8,25 @@ codeunit 50101 "Cons Sales Invoices Mgt SGS"
 
     [EventSubscriber(ObjectType::Codeunit, Codeunit::"Sales-Post", 'OnAfterSalesInvHeaderInsert', '', false, false)]
     local procedure UpdateConsSalesInvOnAfterSalesInvHeaderInsert(var SalesInvHeader: Record "Sales Invoice Header"; SalesHeader: Record "Sales Header"; CommitIsSuppressed: Boolean; WhseShip: Boolean; WhseReceive: Boolean; var TempWhseShptHeader: Record "Warehouse Shipment Header"; var TempWhseRcptHeader: Record "Warehouse Receipt Header"; PreviewMode: Boolean);
+    var
+        Customer: Record Customer;
+        PaymentTerm: Record "Payment Terms";
+        line: Integer;
+        DueDate: Date;
+        CustLedgEntry: Record "Cust. Ledger Entry";
+        DateFunctionMgt: Codeunit "Date Function Mgt";
     begin
         SalesInvHeader."Target of Consolidation" := SalesHeader."Target of Consolidation";
+        //<2022.07.17 => update "Due Date" following Consolidated invoice due date>
+        PaymentTerm.Get(SalesInvHeader."Payment Terms Code");
+        if (PaymentTerm.IsEmpty) then begin
+            Customer.Get(SalesInvHeader."Bill-to Customer No.");
+            PaymentTerm.Get(Customer."Payment Terms Code");
+        end;
+
+        DueDate := DateFunctionMgt.getDueDateByPaymentDayandCutoffDay(PaymentTerm, SalesInvHeader."Posting Date");
+        SalesInvHeader."Due Date" := DueDate;
+        //<2022.07.17
         SalesInvHeader.Modify();
     end;
 
